@@ -1,12 +1,11 @@
 package summultiples
 
 func SumMultiples(limit int, divisors ...int) (sum int) {
-	multiples := make(map[int]bool, limit)
-	for _, divisor := range divisors {
-		for i := divisor; i < limit; i += divisor {
-			if multiples[i] == false {
+	for i := 1; i < limit; i++ {
+		for _, divisor := range divisors {
+			if i%divisor == 0 {
 				sum += i
-				multiples[i] = true
+				break
 			}
 		}
 	}
